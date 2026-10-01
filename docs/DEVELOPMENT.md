@@ -16,16 +16,18 @@ unrelated local work.
 
 ## Build environment and commands
 
-The project's verified local toolchain is **RGBDS 1.0.3**. Check `rgbasm --version`,
-`rgblink --version`, `rgbfix --version`, and `rgbgfx --version` before building.
+The supported/default project development toolchain is **RGBDS 1.0.4**, matching
+upstream, `.rgbds-version`, CI, and the aligned local environment.
+Check `rgbasm --version`, `rgblink --version`, `rgbfix --version`, and
+`rgbgfx --version` before building.
 Use a Unix-like shell with GNU Make, GCC, and the utilities used by the Makefile
 (including `find` and `sha1sum` or `shasum`); WSL works on Windows. Run commands
 from the repository root.
 
-Upstream `INSTALL.md`, `.rgbds-version`, and CI currently specify 1.0.4;
-`rgbdscheck.asm` accepts 1.0.0 or newer. Those inherited settings do not replace
-the project's verified local version. For a separate installation, the Makefile
-supports `make RGBDS=/path/to/rgbds-1.0.3/` (keep the trailing slash).
+`INSTALL.md` provides environment setup instructions. Although `rgbdscheck.asm`
+accepts 1.0.0 or newer, use 1.0.4 for project development. For a separate
+installation, the Makefile supports `make RGBDS=/path/to/rgbds-1.0.4/`
+(keep the trailing slash).
 
 ```sh
 make              # Red, Blue, and Blue debug ROMs
@@ -48,6 +50,10 @@ The pristine baseline is `d2704a63c26f9ba046ade877445216b3de0519a4`
 (`baseline-pokered`). Only in a separate, clean checkout of that baseline is
 `make compare` expected to match `roms.sha1`. It builds the normal ROMs and VC
 patches and checks their vanilla SHA-1 values.
+
+Historically, this pristine baseline was successfully reproduced locally with
+RGBDS 1.0.3 before the project aligned its development environment to upstream
+1.0.4. That records a past verification, not the current toolchain recommendation.
 
 **An intentionally modified hack ROM is not expected to pass `make compare`.**
 WP002 changes shared text, so Red, Blue, and Blue debug intentionally differ
