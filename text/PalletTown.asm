@@ -43,7 +43,7 @@ _PalletTownOaksLabSignText::
 
 _PalletTownSignText::
 	text "PALLET TOWN"
-	line "Shades of your"
+	line "WP002 hack build"
 	cont "journey await!"
 	done
 
