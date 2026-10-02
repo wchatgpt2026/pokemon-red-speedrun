@@ -66,6 +66,19 @@ all: $(roms)
 red:        pokered.gbc
 blue:       pokeblue.gbc
 blue_debug: pokeblue_debug.gbc
+
+# Project checks complement RGBDS assertions/overflow errors, not vanilla compare.
+PYTHON ?= python3
+.PHONY: validate capacity validation-tests fixture-battle fixture-map
+validate: all validation-tests
+	$(PYTHON) tools/validation.py --check
+capacity: all
+	$(PYTHON) tools/validation.py
+validation-tests: all
+	$(PYTHON) -m unittest discover -s tools/tests -v
+fixture-battle fixture-map: blue_debug
+	@echo "Open pokeblue_debug.gbc; Select at title; FIGHT = battle, MAP = progression."
+	@echo "See docs/VALIDATION.md for reset, observation and save/reload steps."
 red_vc:     pokered.patch
 blue_vc:    pokeblue.patch
 

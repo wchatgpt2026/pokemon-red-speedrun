@@ -59,8 +59,11 @@ RGBDS 1.0.3 before the project aligned its development environment to upstream
 WP002 changes shared text, so Red, Blue, and Blue debug intentionally differ
 from vanilla. Do not update `roms.sha1` to hide this distinction. Validate hack
 builds by successful assembly, linking, ROM generation, focused diff review,
-and local play testing. There is no dedicated non-byte-identity Make check
-target. CI's existing `sh .github/checkdiff.sh` checks tracked Git cleanliness,
+and local play testing. Run `make validate capacity` for the project-specific
+structural checks, capacity report, and advisory baseline deltas introduced by
+WP004. See [VALIDATION.md](VALIDATION.md) for the complete workflow, measured
+headroom, and isolated battle/map fixtures. CI runs these non-emulator checks
+on Linux and macOS. `sh .github/checkdiff.sh` checks tracked Git cleanliness,
 not gameplay or ROM correctness; run it after committing, when the tree is clean.
 
 ## Git hygiene

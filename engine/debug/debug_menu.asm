@@ -52,12 +52,10 @@ IF DEF(_DEBUG)
 
 	ld a, [wCurrentMenuItem]
 	and a ; FIGHT?
-	jp z, TestBattle
+	jp z, WP004BattleFixture
 
-	; DEBUG
-	ld hl, wStatusFlags6
-	set BIT_DEBUG_MODE, [hl]
-	jp StartNewGameDebug
+	; MAP: fresh state, never a loaded save.
+	jp WP004MapFixture
 
 DebugBattlePlayerName:
 	db "Tom@"
@@ -67,7 +65,7 @@ DebugBattleRivalName:
 
 DebugMenuOptions:
 	db   "FIGHT"
-	next "DEBUG@"
+	next "MAP@"
 ELSE
 	ret
 ENDC

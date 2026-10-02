@@ -43,6 +43,7 @@ jobs:
         if: ${{ github.repository_owner != 'pret' }}
         run: |
           make -j$(nproc)
+          make validate capacity
           .github/checkdiff.sh
 
       - name: Checkout symbols
@@ -99,4 +100,5 @@ jobs:
         if: ${{ github.repository_owner != 'pret' }}
         run: |
           make -j$(sysctl -n hw.ncpu)
+          make validate capacity
           .github/checkdiff.sh

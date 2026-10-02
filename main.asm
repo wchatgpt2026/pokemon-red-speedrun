@@ -21,6 +21,9 @@ INCLUDE "engine/menus/main_menu.asm"
 INCLUDE "engine/movie/oak_speech/oak_speech.asm"
 INCLUDE "engine/overworld/special_warps.asm"
 INCLUDE "engine/debug/debug_party.asm"
+IF DEF(_DEBUG)
+INCLUDE "engine/debug/validation_fixtures.asm"
+ENDC
 INCLUDE "engine/menus/naming_screen.asm"
 INCLUDE "engine/movie/oak_speech/oak_speech2.asm"
 INCLUDE "engine/items/subtract_paid_money.asm"
